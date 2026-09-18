@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# search and AI crawlers are welcome
+User-agent: Googlebot
+Allow: /
+User-agent: Googlebot-Image
+Allow: /
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://hashir.nexlyr.solutions/sitemap.xml
