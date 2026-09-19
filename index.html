@@ -1931,6 +1931,7 @@ button.tile:hover::after{opacity:1}
                 <label>Your name<input name="name" autocomplete="name" maxlength="120" required></label>
                 <label>Email<input name="email" type="email" autocomplete="email" maxlength="200" required></label>
               </div>
+              <label>Phone / WhatsApp<input name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="40" required placeholder="+92 3XX XXXXXXX"></label>
               <label>What do you need?<textarea name="message" maxlength="4000" required placeholder="A website, a brand, a promo video, social media..."></textarea></label>
               <label class="trap" aria-hidden="true">Leave empty<input name="company" tabindex="-1" autocomplete="off"></label>
               <div><button class="btn btn-solid" type="submit" id="send"><span class="bi"><svg class="icon"><use href="#i-send"/></svg></span><span id="sendLabel">Send message</span></button></div>
@@ -2536,10 +2537,12 @@ form.addEventListener('submit', async e => {
   e.preventDefault();
   const f = new FormData(form);
   if(f.get('company')) return;
-  const row = { name:String(f.get('name')).trim(), email:String(f.get('email')).trim(), message:String(f.get('message')).trim() };
+  const row = { name:String(f.get('name')).trim(), email:String(f.get('email')).trim(), phone:String(f.get('phone') || '').trim(), message:String(f.get('message')).trim() };
   msg.className = 'note bad';
   if(!row.name) return msg.textContent = 'Add your name.';
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(row.email)) return msg.textContent = 'That email address looks incomplete.';
+  const digits = row.phone.replace(/\D/g, '');
+  if(digits.length < 7 || digits.length > 15) return msg.textContent = 'Add a phone or WhatsApp number I can reach you on.';
   if(!row.message) return msg.textContent = 'Tell me a little about the project.';
   if(!URL_OK) return msg.textContent = 'The form is not connected yet. Please reach out through nexlyr.solutions for now.';
   send.disabled = true; sendLabel.textContent = 'Sending…'; msg.textContent = '';
