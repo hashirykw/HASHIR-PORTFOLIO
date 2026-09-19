@@ -33,27 +33,27 @@
   "rewrites": [
     {
       "source": "/services",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/reels",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/design",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/work",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/experience",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ],
   "headers": [
