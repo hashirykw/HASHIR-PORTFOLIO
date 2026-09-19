@@ -67,7 +67,7 @@
       ]
     },
     {
-      "source": "/(.*)\\.(woff2|js)",
+      "source": "/(.*)\\.(woff2)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -76,7 +76,43 @@
       ]
     },
     {
+      "source": "/(.*)\\.(js)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(services|reels|design|work|experience|contact)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(html)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(web-development|graphic-design|video-editing|social-media-marketing|about)",
       "headers": [
         {
           "key": "Cache-Control",
