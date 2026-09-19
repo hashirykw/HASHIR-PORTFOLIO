@@ -1,14 +1,14 @@
 /* ─────────────────────────────────────────────────────────────
-   PORTFOLIO CONFIG: the only file you need to edit.
+   MAIN CONFIG — for the portfolio repo (the public site).
+   The admin repo has its own, called admin-config.js.
    ───────────────────────────────────────────────────────────── */
 window.PORTFOLIO_CONFIG = {
 
   /* Supabase → Project Settings → Data API.
-     supabaseUrl is the ONLY thing still missing. Paste your Project URL —
-     it looks like https://abcdefghijkl.supabase.co — and the site, the
-     contact form and /admin all start using the database.
-     Until then the site runs on the fallback content further down.      */
-  supabaseUrl: 'https://YOUR-PROJECT-REF.supabase.co',   // ← paste your Project URL here
+     With these filled in, the site and the contact form use the database.
+     Empty the database and it falls back to the content further down,
+     so the site never looks broken.                                     */
+  supabaseUrl: 'https://rkjnfxjbtsypttatxwrc.supabase.co',
   supabaseKey: 'sb_publishable_GUxZjSH3OJYp2fMZNaTvyA_2VZoO4Dx',
 
   video: {
