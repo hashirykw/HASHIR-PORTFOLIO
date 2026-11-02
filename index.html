@@ -183,7 +183,7 @@
 <link rel="preload" href="hero-poster-mobile.webp" as="image" fetchpriority="high" media="(max-aspect-ratio: 1/1)">
 <link rel="preload" href="font-grotesk-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="font-poppins-400.woff2" as="font" type="font/woff2" crossorigin>
-<script src="config.js?v=2"></script>
+<script src="config.js?v=3"></script>
 <script src="lenis.min.js" defer></script>
 <style>
 @font-face{font-family:'Archivo';src:url('font-archivo-600.woff2') format('woff2');font-weight:500 600;font-style:normal;font-display:swap}
@@ -1115,6 +1115,18 @@ input,textarea{font-size:15px;font-family:var(--font)}
 .dash-main > section,.dash-main > div{align-self:start}
 .card,.hero-card,.dash-head{overflow-wrap:anywhere}
 .work-top{align-items:center;row-gap:10px}
+/* category chips under the Live / Demos / Software tabs */
+.cats{flex-basis:100%;display:flex;flex-wrap:wrap;gap:8px}
+.cats[hidden]{display:none}
+.cats button{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 13px;border-radius:999px;
+  font-size:12.5px;color:var(--ink-2);background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.09);
+  transition:color .2s,background .2s,box-shadow .2s}
+.cats button:hover{color:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.cats button.on{color:var(--ink);background:rgba(0,200,248,.12);box-shadow:inset 0 0 0 1px rgba(0,200,248,.5)}
+.cats button i{font-style:normal;font-size:11px;font-variant-numeric:tabular-nums;color:var(--ink-3)}
+.cats button.on i{color:var(--blue)}
+.cats button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+@media (max-width:640px){.cats{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -2px;padding:2px}.cats::-webkit-scrollbar{display:none}.cats button{flex:none;height:30px;font-size:12px}}
 .dash-head{align-items:center}
 .stats{align-self:start;--lg-tint:rgba(3,10,18,.6)}
 .row-1{align-items:stretch}
@@ -1825,66 +1837,117 @@ html.pre-on .screen::before,html.pre-on .screen::after{opacity:0}
             <div class="seg" id="filters">
               <span class="lens" aria-hidden="true"></span>
               <button class="on" data-f="live">Live sites</button>
-              <button data-f="software">Software</button>
               <button data-f="demo">Demos</button>
+              <button data-f="software">Software</button>
             </div>
+            <div class="cats" id="cats" role="group" aria-label="Filter by category"></div>
           </div>
           <div class="thead"><span>Project</span><span>What it is</span><span style="justify-self:end">Link</span></div>
           <div id="workRows"><div class="trow">
-      <div class="pj"><span class="thumb logo-tile"><img src="logo-verzish.webp" alt="The Verzish.com logo" loading="lazy" width="48" height="48"></span>
-        <span><b>The Verzish.com</b><small>Client site</small></span></div>
-      <div class="desc">Parent site for three unisex gyms in Karachi, opening on a preloader where the hero reel plays inside giant letters before diving into the page.</div>
-      <div class="cell-live"><a class="live" href="https://verzish.vercel.app" target="_blank" rel="noopener"><i class="dot"></i><span>verzish.vercel.app</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-wrappi.webp" alt="Wrappi logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Wrappi</b><small>Client site</small></span></div>
+      <div class="desc">PPF, colour wrap and ceramic coating studio in Oslo, with the whole site in Norwegian and English.</div>
+      <div class="cell-live"><a class="live" href="https://wrappingartdesign.no" target="_blank" rel="noopener"><i class="dot"></i><span>wrappingartdesign.no</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div><div class="trow">
-      <div class="pj"><span class="thumb logo-tile"><img src="logo-grub.webp" alt="Grub Coffee Co. logo" loading="lazy" width="48" height="48"></span>
-        <span><b>Grub Coffee Co.</b><small>Client site</small></span></div>
-      <div class="desc">Site for a North Nazimabad coffee shop, with a cinematic hero, full drinks menu, brew-process story and photo gallery.</div>
-      <div class="cell-live"></div>
-    </div><div class="trow">
-      <div class="pj"><span class="thumb logo-tile light"><img src="logo-smk.webp" alt="Physics with SMK logo" loading="lazy" width="48" height="48"></span>
-        <span><b>Physics with SMK</b><small>Client site</small></span></div>
-      <div class="desc">Physics tuition platform for Sir Mehboob Khan with topical past papers, practice questions and video lectures.</div>
-      <div class="cell-live"><a class="live" href="https://physicswithsmk.com" target="_blank" rel="noopener"><i class="dot"></i><span>physicswithsmk.com</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+      <div class="pj"><span class="thumb logo-tile light"><img src="logo-xahid.webp" alt="Sir Xahid Anwar logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Sir Xahid Anwar</b><small>Client site</small></span></div>
+      <div class="desc">O Level and IGCSE English site with a student portal, past papers in a timed exam mode and AI essay checking.</div>
+      <div class="cell-live"><a class="live" href="https://englishwithsxa.com" target="_blank" rel="noopener"><i class="dot"></i><span>englishwithsxa.com</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div><div class="trow">
       <div class="pj"><span class="thumb logo-tile light"><img src="logo-cambridge.webp" alt="Cambridge Online logo" loading="lazy" width="48" height="48"></span>
         <span><b>Cambridge Online</b><small>Client site</small></span></div>
-      <div class="desc">Multi-page site for an O Level, IGCSE and A Level online academy, with faculty listings, courses and campuses.</div>
+      <div class="desc">Multi-page site for an O Level, IGCSE and A Level online academy, with faculty listings, courses, campuses and its own admin panel.</div>
       <div class="cell-live"><a class="live" href="https://cambridgeonline.tech" target="_blank" rel="noopener"><i class="dot"></i><span>cambridgeonline.tech</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div><div class="trow">
-      <div class="pj"><span class="thumb logo-tile"><img src="nexlyr-mark.png" alt="Nexlyr Solutions logo" loading="lazy" width="48" height="48"></span>
-        <span><b>Nexlyr Solutions</b><small>Agency</small></span></div>
-      <div class="desc">Ten-page agency site with a Three.js globe hero, glass interface, a Supabase leads system and its own admin dashboard.</div>
-      <div class="cell-live"><a class="live" href="https://nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-verzish.webp" alt="The Verzish.com logo" loading="lazy" width="48" height="48"></span>
+        <span><b>The Verzish.com</b><small>Client site</small></span></div>
+      <div class="desc">Parent site for three unisex gyms in Karachi, opening on a preloader where the hero reel plays inside giant letters before diving into the page.</div>
+      <div class="cell-live"><a class="live" href="https://verzish.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>verzish.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-fit-monster.webp" alt="The Fit Monster logo" loading="lazy" width="48" height="48"></span>
+        <span><b>The Fit Monster</b><small>Client site</small></span></div>
+      <div class="desc">Premium gym in Nazimabad with Hammer Strength kit, a 3D tour of the floor and hours that run till 4 AM.</div>
+      <div class="cell-live"><a class="live" href="https://fit-monster.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>fit-monster.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile light"><img src="logo-smk.webp" alt="Physics with SMK logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Physics with SMK</b><small>Client site</small></span></div>
+      <div class="desc">Physics tuition platform for Sir Mehboob Khan with student logins, topical past papers, practice questions and video lectures.</div>
+      <div class="cell-live"><a class="live" href="https://physicswithsmk.com" target="_blank" rel="noopener"><i class="dot"></i><span>physicswithsmk.com</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-vision.webp" alt="Vision Properties logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Vision Properties</b><small>Client site</small></span></div>
+      <div class="desc">Real estate marketing for apartments, plots and commercial projects across Karachi, from DHA Phase VIII to the M-9.</div>
+      <div class="cell-live"><a class="live" href="https://vision-property.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>vision-property.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-solarscape.webp" alt="SolarScape Solutions logo" loading="lazy" width="48" height="48"></span>
+        <span><b>SolarScape Solutions</b><small>Client site</small></span></div>
+      <div class="desc">Solar installation, net metering and after-sales care for industry, business and homes, from a FOX ESS Gold Distributor.</div>
+      <div class="cell-live"><a class="live" href="https://solar-scape.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>solar-scape.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-evesse.webp" alt="Evessé by Dr. Faria logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Evessé by Dr. Faria</b><small>Client site</small></span></div>
+      <div class="desc">Dermatology-led skin, hair and aesthetic clinic by Dr. Faria Khan, with two branches in Karachi.</div>
+      <div class="cell-live"><a class="live" href="https://evesse.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>evesse.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div><div class="trow">
       <div class="pj"><span class="thumb logo-tile"><img src="logo-markaz.webp" alt="Markaz OUJ Performance logo" loading="lazy" width="48" height="48"></span>
         <span><b>Markaz OUJ Performance</b><small>Client site</small></span></div>
       <div class="desc">Multi-page site for a Karachi sports and fitness company, covering its martial arts academy, store and a custom chat assistant.</div>
       <div class="cell-live"><a class="live" href="https://markaz-ouj.com" target="_blank" rel="noopener"><i class="dot"></i><span>markaz-ouj.com</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-revolution.webp" alt="Revolution MMA logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Revolution MMA</b><small>Client site</small></span></div>
+      <div class="desc">MMA and Brazilian Jiu-Jitsu academy across DHA Phase 6 and North Nazimabad, with an interactive 3D centrepiece and free trials on WhatsApp.</div>
+      <div class="cell-live"><a class="live" href="https://revolution.com.pk" target="_blank" rel="noopener"><i class="dot"></i><span>revolution.com.pk</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-legacive.webp" alt="Legacive Barber Studio logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Legacive Barber Studio</b><small>Client site</small></span></div>
+      <div class="desc">Appointment-only barber studio in Uxbridge, Ontario: skin fades, hair designs and beard work, booked online.</div>
+      <div class="cell-live"><a class="live" href="https://legacive-barberstudio.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>legacive-barberstudio.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-desi-sawad.webp" alt="Desi Sawad logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Desi Sawad</b><small>Client site</small></span></div>
+      <div class="desc">Pakistani restaurant in Riyadh, with karahi, biryani and seekh kebab on the menu and the hours up front.</div>
+      <div class="cell-live"><a class="live" href="https://desi-sawad.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>desi-sawad.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile dark"><img src="logo-sb.webp" alt="Maths With SB logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Maths With SB</b><small>Client site</small></span></div>
+      <div class="desc">O and A Level Mathematics site for Sir Saud Barlas, built as an installable app that works offline, with past papers linked by year.</div>
+      <div class="cell-live"><a class="live" href="https://saud.barlas.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>saud.barlas.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-cafe-shafe.webp" alt="Cafe Shafe logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Cafe Shafe</b><small>Client site</small></span></div>
+      <div class="desc">Rooftop chai café in North Nazimabad with nine chais, twenty parathas and a menu that reads in one hand.</div>
+      <div class="cell-live"><a class="live" href="https://cafe-shafe.vercel.app" target="_blank" rel="noopener"><i class="dot"></i><span>cafe-shafe.vercel.app</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-grub.webp" alt="Grub Coffee Co. logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Grub Coffee Co.</b><small>Client site</small></span></div>
+      <div class="desc">Site for a North Nazimabad coffee shop, with a cinematic hero, full drinks menu, brew-process story and photo gallery.</div>
+      <div class="cell-live"><a class="live" href="https://grub.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>grub.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="logo-hakuna.webp" alt="Hakuna Matata logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Hakuna Matata</b><small>Client site</small></span></div>
+      <div class="desc">Loaded fries, zinger and broast deals, with delivery one tap away.</div>
+      <div class="cell-live"><a class="live" href="https://hakuna-matata.nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>hakuna-matata.nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
+      <div class="pj"><span class="thumb logo-tile"><img src="nexlyr-mark.png" alt="Nexlyr Solutions logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Nexlyr Solutions</b><small>Agency</small></span></div>
+      <div class="desc">Ten-page agency site with a Three.js globe hero, glass interface, a Supabase leads system and its own admin dashboard.</div>
+      <div class="cell-live"><a class="live" href="https://nexlyr.solutions" target="_blank" rel="noopener"><i class="dot"></i><span>nexlyr.solutions</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+    </div><div class="trow">
       <div class="pj"><span class="thumb logo-tile light"><img src="logo-saz.webp" alt="SAZ Chemistry logo" loading="lazy" width="48" height="48"></span>
         <span><b>SAZ Chemistry</b><small>Client site</small></span></div>
       <div class="desc">Chemistry tuition site for Sir Suhail Aziz, with syllabus pages for 9701, 5070 and 0620, a study toolkit and explainer videos.</div>
       <div class="cell-live"><a class="live" href="https://sohail-aziz.vercel.app" target="_blank" rel="noopener"><i class="dot"></i><span>sohail-aziz.vercel.app</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div><div class="trow">
-      <div class="pj"><span class="thumb logo-tile dark"><img src="logo-sb.webp" alt="Maths With SB logo" loading="lazy" width="48" height="48"></span>
-        <span><b>Maths With SB</b><small>Client site</small></span></div>
-      <div class="desc">O and A Level Mathematics site for Sir Saud Barlas, built as an installable app that works offline, with past papers linked by year.</div>
-      <div class="cell-live"></div>
-    </div><div class="trow">
-      <div class="pj"><span class="thumb logo-tile"><img src="logo-revolution.webp" alt="REVOLUTION MMA logo" loading="lazy" width="48" height="48"></span>
-        <span><b>REVOLUTION MMA</b><small>Client site</small></span></div>
-      <div class="desc">Single-page site for a mixed martial arts gym with an interactive 3D centrepiece.</div>
-      <div class="cell-live"><a class="live" href="https://revolution-jet-delta.vercel.app" target="_blank" rel="noopener"><i class="dot"></i><span>revolution-jet-delta.vercel.app</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
+      <div class="pj"><span class="thumb logo-tile light"><img src="logo-kphs.webp" alt="Karachi Public High School logo" loading="lazy" width="48" height="48"></span>
+        <span><b>Karachi Public High School</b><small>Client site</small></span></div>
+      <div class="desc">Site for a North Nazimabad school running from Montessori to Matric, covering its labs, faculty, admissions and a built-in assistant.</div>
+      <div class="cell-live"><a class="live" href="https://kphs.vercel.app" target="_blank" rel="noopener"><i class="dot"></i><span>kphs.vercel.app</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div><div class="trow">
       <div class="pj"><span class="thumb logo-tile"><img src="logo-infinimind.svg" alt="InfiniMind Academy logo" loading="lazy" width="48" height="48"></span>
         <span><b>InfiniMind Academy</b><small>EdTech platform</small></span></div>
       <div class="desc">Online platform where children learn AI and coding.</div>
       <div class="cell-live"><a class="live" href="https://infinimind.vercel.app" target="_blank" rel="noopener"><i class="dot"></i><span>infinimind.vercel.app</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
-    </div><div class="trow">
-      <div class="pj"><span class="thumb logo-tile light"><img src="logo-kphs.webp" alt="Karachi Public High School logo" loading="lazy" width="48" height="48"></span>
-        <span><b>Karachi Public High School</b><small>Client site</small></span></div>
-      <div class="desc">Site for a North Nazimabad school running from Montessori to Matric, covering its labs, faculty, admissions and a built-in assistant.</div>
-      <div class="cell-live"><a class="live" href="https://kphs.vercel.app" target="_blank" rel="noopener"><i class="dot"></i><span>kphs.vercel.app</span><svg class="icon" style="width:15px;height:15px"><use href="#i-arrow"/></svg></a></div>
     </div></div>
         </section>
 
@@ -2389,9 +2452,21 @@ function paintExperience(list){
     </div></div>`;
   }).join('');
 }
-let projects = [];
+let projects = [], workCat = 'all';
+const CAT_ORDER = ['Education', 'Fitness & martial arts', 'Food & cafés', 'Business & services'];
+function paintCats(inGroup){
+  const box = $('#cats'), counts = {};
+  inGroup.forEach(p => { if(p.cat) counts[p.cat] = (counts[p.cat] || 0) + 1; });
+  const cats = Object.keys(counts).sort((a, b) => (CAT_ORDER.indexOf(a) + 1 || 99) - (CAT_ORDER.indexOf(b) + 1 || 99));
+  if(workCat !== 'all' && !counts[workCat]) workCat = 'all';
+  box.hidden = cats.length < 2;
+  box.innerHTML = [['all', 'All', inGroup.length], ...cats.map(c => [c, c, counts[c]])].map(([k, label, n]) =>
+    `<button type="button" data-cat="${esc(k)}" class="${k === workCat ? 'on' : ''}" aria-pressed="${k === workCat}">${esc(label)}<i>${n}</i></button>`).join('');
+}
 function paintWork(filter){
-  const list = projects.filter(p => (p.group || (p.featured === false ? 'demo' : 'live')) === filter);
+  const inGroup = projects.filter(p => (p.group || (p.featured === false ? 'demo' : 'live')) === filter);
+  paintCats(inGroup);
+  const list = workCat === 'all' ? inGroup : inGroup.filter(p => p.cat === workCat);
   $('#workRows').dataset.count = list.length;
   $('#workRows').innerHTML = list.map(p => {
     const href = safeLink(p.link);
@@ -2403,7 +2478,15 @@ function paintWork(filter){
     </div>`;
   }).join('') || '<div class="trow"><div class="desc">Nothing in this group yet.</div></div>';
 }
+$('#cats').addEventListener('click', e => {
+  const b = e.target.closest('button[data-cat]');
+  if(!b || b.dataset.cat === workCat) return;
+  workCat = b.dataset.cat;
+  paintWork(($('#filters button.on') || {}).dataset?.f || 'live');
+  requestAnimationFrame(() => scroller.dispatchEvent(new Event('scroll')));
+});
 $$('#filters button').forEach(b => b.addEventListener('click', () => {
+  workCat = 'all';
   $$('#filters button').forEach(x => x.classList.toggle('on', x === b));
   moveLens($('#filters'), b);
   paintWork(b.dataset.f);
