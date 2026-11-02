@@ -33,6 +33,10 @@ window.PORTFOLIO_CONFIG = {
   /* Shown until Supabase is connected (or if the admin tables are empty).
      group: 'live' = main list, 'demo' = the Demos tab.
      logo: image file, logoBg: 'light' puts dark logos on a light tile. */
+  /* Where the Selected work list comes from.
+     'config' = the projects list below (default). 'admin' = the admin panel's projects table. */
+  projectsFrom: 'config',
+
   fallback: {
     projects: [
       /* Live sites, in Hashir's order. cat: Education, Fitness & martial arts,
