@@ -180,7 +180,7 @@ onScroll();
   const wa = (text) => `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
   const AV = '/avatar.webp';
   const A = {
-    hi: "Hi, I'm Hashir's assistant. Ask me about websites, video editing, design, social media, timelines or how to start a project.",
+    hi: "Hi, I'm Hashir AI, the assistant on this site. Ask me about websites, video editing, design, social media, timelines or how to start a project.",
     web: "Hashir builds custom websites, web apps and admin panels by hand (no page builders): 3D and motion where it helps, Supabase backends, fast on phones, hosted on Vercel with your domain.\n\nSee the work: <a href=\"/web-development\">Web development</a>",
     video: "Promos, explainers, reels and brand idents, edited in Premiere and After Effects with motion graphics that carry the message. AI video (Veo 3, Higgsfield, Runway) when it fits.\n\nSee: <a href=\"/video-editing\">Video editing</a>",
     design: "Logos, brand identity, social posts and print, designed to hold up everywhere.\n\nSee: <a href=\"/graphic-design\">Graphic design</a>",
@@ -214,11 +214,11 @@ onScroll();
   const CHIPS = [['Websites','web'],['Video editing','video'],['Design','design'],['Social media','social'],['Pricing','price'],['Timeline','time'],['Start a project','start']];
 
   const fab = document.createElement('button');
-  fab.type = 'button'; fab.className = 'chat-fab'; fab.setAttribute('aria-label', 'Chat with Hashir\'s assistant'); fab.setAttribute('aria-expanded', 'false');
-  fab.innerHTML = `<span class="chat-fab__av"><img src="${AV}" alt="" width="40" height="40" loading="lazy"></span><span>Ask me anything</span>`;
+  fab.type = 'button'; fab.className = 'chat-fab'; fab.setAttribute('aria-label', 'Chat with Hashir AI'); fab.setAttribute('aria-expanded', 'false');
+  fab.innerHTML = `<span class="chat-fab__orb"><span class="chat-fab__av"><img src="${AV}" alt="" width="44" height="44" loading="lazy"></span><span class="chat-fab__spark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></svg></span></span><span class="chat-fab__txt"><b>Hashir AI</b><small>Ask me anything</small></span>`;
   const box = document.createElement('section');
-  box.className = 'chat'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Chat with Hashir\'s assistant');
-  box.innerHTML = `<header class="chat__head"><img src="${AV}" alt="" width="38" height="38"><div><b>Hashir's assistant</b><small>Usually replies on WhatsApp within the hour</small></div>
+  box.className = 'chat'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Chat with Hashir AI');
+  box.innerHTML = `<header class="chat__head"><span class="chat-fab__orb chat-fab__orb--sm"><span class="chat-fab__av"><img src="${AV}" alt="" width="40" height="40"></span></span><div><b>Hashir AI</b><small>Assistant · online now</small></div>
       <button class="chat__x" type="button" aria-label="Close chat"><svg viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></svg></button></header>
     <div class="chat__log" aria-live="polite"></div>
     <div class="chat__chips">${CHIPS.map(([t,k]) => `<button type="button" data-k="${k}">${t}</button>`).join('')}</div>
