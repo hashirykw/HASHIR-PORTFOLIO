@@ -215,10 +215,10 @@ onScroll();
 
   const fab = document.createElement('button');
   fab.type = 'button'; fab.className = 'chat-fab'; fab.setAttribute('aria-label', 'Chat with Hashir AI'); fab.setAttribute('aria-expanded', 'false');
-  fab.innerHTML = `<span class="chat-fab__orb"><span class="chat-fab__av"><img src="${AV}" alt="" width="44" height="44" loading="lazy"></span><span class="chat-fab__spark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 0C12.9 7.6 16.4 11.1 24 12 16.4 12.9 12.9 16.4 12 24 11.1 16.4 7.6 12.9 0 12 7.6 11.1 11.1 7.6 12 0Z"/></svg></span></span><span class="chat-fab__txt"><b>Hashir AI</b><small>Ask me anything</small></span>`;
+  fab.innerHTML = `<span class="chat-fab__me" aria-hidden="true"><i></i><img src="/chat-hashir.webp" alt="" width="120" height="120"></span><span class="chat-fab__txt"><b>Hashir AI <em>●</em></b><small>Ask me anything</small></span><span class="chat-fab__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>`;
   const box = document.createElement('section');
   box.className = 'chat'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Chat with Hashir AI');
-  box.innerHTML = `<header class="chat__head"><span class="chat-fab__orb chat-fab__orb--sm"><span class="chat-fab__av"><img src="${AV}" alt="" width="40" height="40"></span></span><div><b>Hashir AI</b><small>Assistant · online now</small></div>
+  box.innerHTML = `<header class="chat__head"><span class="chat-fab__me chat-fab__me--sm" aria-hidden="true"><i></i><img src="/chat-hashir.webp" alt="" width="120" height="120"></span><div><b>Hashir AI</b><small>Assistant · online now</small></div>
       <button class="chat__x" type="button" aria-label="Close chat"><svg viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></svg></button></header>
     <div class="chat__log" aria-live="polite"></div>
     <div class="chat__chips">${CHIPS.map(([t,k]) => `<button type="button" data-k="${k}">${t}</button>`).join('')}</div>
