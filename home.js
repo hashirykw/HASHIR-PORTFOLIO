@@ -292,7 +292,7 @@ if(URL_OK){
   if(!gl){ t.classList.add('no-3d'); return; }
   const io = new IntersectionObserver(es => {
     if(!es[0].isIntersecting) return; io.disconnect();
-    import('./figure.js?v=1').then(m => m.mountFigure(t)).catch(() => t.classList.add('no-3d'));
+    import('./figure.js?v=2').then(m => m.mountFigure(t)).catch(() => t.classList.add('no-3d'));
   }, { rootMargin:'600px' });
   io.observe(t);
 })();

@@ -6,7 +6,7 @@ import { RoundedBoxGeometry } from './vendor/three/RoundedBoxGeometry.js';
 import { GLTFLoader } from './vendor/three/GLTFLoader.js';
 
 // If a real scan of Hashir exists at hashir.glb, it replaces the hand-built figure (same plinth, light and spin).
-const MODEL_URL = 'hashir.glb';
+const MODEL_URL = '';   // set to 'hashir.glb' once the scan is in the repo
 
 export function mountFigure(box) {
   const canvas = document.createElement('canvas');
@@ -147,7 +147,7 @@ export function mountFigure(box) {
   fig.position.y = 0;
 
   /* swap in the real model when hashir.glb is present */
-  fetch(MODEL_URL, { method: 'HEAD' }).then(r => {
+  if (MODEL_URL) fetch(MODEL_URL, { method: 'HEAD' }).then(r => {
     if (!r.ok || !/model|octet|gltf/.test(r.headers.get('content-type') || '')) return;
     new GLTFLoader().load(MODEL_URL, g => {
       const m = g.scene;
