@@ -3,6 +3,10 @@
 // It turns slowly on a round plinth; drag (or swipe) to spin it. Loaded only when the block comes near the screen.
 import * as THREE from './vendor/three/three.min.js';
 import { RoundedBoxGeometry } from './vendor/three/RoundedBoxGeometry.js';
+import { GLTFLoader } from './vendor/three/GLTFLoader.js';
+
+// If a real scan of Hashir exists at hashir.glb, it replaces the hand-built figure (same plinth, light and spin).
+const MODEL_URL = 'hashir.glb';
 
 export function mountFigure(box) {
   const canvas = document.createElement('canvas');
@@ -142,6 +146,22 @@ export function mountFigure(box) {
 
   fig.position.y = 0;
 
+  /* swap in the real model when hashir.glb is present */
+  fetch(MODEL_URL, { method: 'HEAD' }).then(r => {
+    if (!r.ok || !/model|octet|gltf/.test(r.headers.get('content-type') || '')) return;
+    new GLTFLoader().load(MODEL_URL, g => {
+      const m = g.scene;
+      m.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+      const b = new THREE.Box3().setFromObject(m), size = b.getSize(new THREE.Vector3());
+      const k = 2.02 / size.y; m.scale.setScalar(k);
+      const c = b.getCenter(new THREE.Vector3());
+      m.position.set(-c.x * k, -b.min.y * k, -c.z * k);
+      [...fig.children].forEach(ch => { if (ch !== plinth && !(ch.geometry && ch.geometry.type === 'TorusGeometry' && ch.position.y === 0)) fig.remove(ch); });
+      fig.add(m); real = true;
+    });
+  }).catch(() => {});
+  let real = false;
+
   /* interaction: slow turn, drag to spin with inertia */
   let angle = -.35, vel = 0, dragging = false, lastX = 0, lastT = 0;
   const autoSpeed = .32;   // radians per second
@@ -169,10 +189,12 @@ export function mountFigure(box) {
     if (!dragging) { vel *= Math.pow(.04, dt); angle += (autoSpeed + vel) * dt; }
     fig.rotation.y = angle;
     const t = (now - clock) / 1000;
-    torso.position.y = 1.02 + Math.sin(t * 1.7) * .006;            // breathing
-    head.rotation.z = Math.sin(t * .6) * .035;
-    head.rotation.x = Math.sin(t * .45) * .03;
-    arms.forEach(a => { a.shoulder.rotation.x = Math.sin(t * 1.1 + a.s) * .04; });
+    if (!real) {
+      torso.position.y = 1.02 + Math.sin(t * 1.7) * .006;            // breathing
+      head.rotation.z = Math.sin(t * .6) * .035;
+      head.rotation.x = Math.sin(t * .45) * .03;
+      arms.forEach(a => { a.shoulder.rotation.x = Math.sin(t * 1.1 + a.s) * .04; });
+    }
     renderer.render(scene, camera);
     raf = running ? requestAnimationFrame(frame) : 0;
   }
