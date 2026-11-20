@@ -111,7 +111,8 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   e.target.classList.add('is-on');
   io.unobserve(e.target);
 }), { threshold:.25, rootMargin:'0px 0px -6% 0px' });
-$$('.sel, .polaroid, [data-in], [data-reveal]').forEach(el => io.observe(el));
+$$('.tk-grid').forEach(g => [...g.children].forEach((t, i) => t.style.setProperty('--i', i)));
+$$('.sel, .polaroid, [data-in], [data-reveal], .tk-grid').forEach(el => io.observe(el));
 
 /* ── deep links: /work, /reels, /contact … land on their section ── */
 const PATHS = { services:'services', reels:'reels', design:'design', work:'work', experience:'route', contact:'contact', about:'about' };

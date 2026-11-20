@@ -768,3 +768,36 @@ a.logo-tile--next:hover .h2-like{color:var(--color-paper-hi)}
 .sm-steps .num{font:700 var(--text-2xs)/1 var(--font-display);letter-spacing:.08em;color:var(--color-accent)}
 .sm-steps b{font:900 clamp(1.2rem,.9rem + 1vw,1.7rem)/1 var(--font-display);text-transform:uppercase;color:var(--color-on-ink)}
 .sm-steps p{font-size:var(--text-sm);color:oklch(100% 0 0 / .66)}
+
+/* ───────── the toolkit: ink tiles, brand-coloured glow, 6 to a row ───────── */
+.toolkit{margin-top:clamp(3rem,7vw,5.5rem);display:grid;gap:clamp(1.6rem,3.5vw,2.6rem)}
+.tk-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;padding-bottom:1rem;border-bottom:2px solid var(--color-ink)}
+.tk-title{font-size:clamp(2rem,1.2rem + 3.4vw,4.2rem)!important;line-height:.9;margin:0!important}
+.toolkit .ai-badge{margin:0}
+.tk-lbl{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.8rem}
+.tk-lbl .lbl:first-child{color:var(--color-accent)}
+.tk-lbl .num{color:var(--color-ink-3)}
+.tk-grid{list-style:none;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(.45rem,1.1vw,.85rem)}
+.tk-grid>.tk{grid-column:span 2}
+@media (max-width:22.99rem){.tk-grid>.tk:nth-child(4n+1):nth-last-child(1){grid-column:4 / span 2}.tk-grid>.tk:nth-child(4n+1):nth-last-child(2){grid-column:3 / span 2}.tk-grid>.tk:nth-child(4n+1):nth-last-child(3){grid-column:2 / span 2}}
+@media (min-width:23rem) and (max-width:47.99rem){.tk-grid{grid-template-columns:repeat(10,minmax(0,1fr))}.tk-grid>.tk:nth-child(5n+1):nth-last-child(1){grid-column:5 / span 2}.tk-grid>.tk:nth-child(5n+1):nth-last-child(2){grid-column:4 / span 2}.tk-grid>.tk:nth-child(5n+1):nth-last-child(3){grid-column:3 / span 2}.tk-grid>.tk:nth-child(5n+1):nth-last-child(4){grid-column:2 / span 2}}
+@media (min-width:48rem){.tk-grid{grid-template-columns:repeat(12,minmax(0,1fr))}.tk-grid>.tk:nth-child(6n+1):nth-last-child(1){grid-column:6 / span 2}.tk-grid>.tk:nth-child(6n+1):nth-last-child(2){grid-column:5 / span 2}.tk-grid>.tk:nth-child(6n+1):nth-last-child(3){grid-column:4 / span 2}.tk-grid>.tk:nth-child(6n+1):nth-last-child(4){grid-column:3 / span 2}.tk-grid>.tk:nth-child(6n+1):nth-last-child(5){grid-column:2 / span 2}}
+.tk{position:relative;isolation:isolate;overflow:hidden;aspect-ratio:1/1.14;min-width:0;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;justify-items:center;align-items:center;
+  padding:12% 6% 9%;background:linear-gradient(160deg,oklch(24% 0 0),oklch(13% 0 0) 62%);color:var(--color-on-ink);
+  box-shadow:inset 0 1px 0 oklch(100% 0 0 / .14),inset 0 0 0 1px oklch(100% 0 0 / .06),3px 3px 0 var(--color-ink);
+  transition:translate .35s var(--ease-out),box-shadow .35s var(--ease-out)}
+.tk::before{content:"";position:absolute;z-index:-1;left:50%;top:42%;width:120%;aspect-ratio:1;translate:-50% -50%;border-radius:50%;
+  background:radial-gradient(closest-side,color-mix(in oklch,var(--g) 34%,transparent),transparent 72%);opacity:.55;transition:opacity .35s var(--ease-out),scale .5s var(--ease-out)}
+.tk::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,transparent 35%,oklch(100% 0 0 / .07) 48%,transparent 60%);translate:-100% 0;transition:translate .8s var(--ease-out)}
+.tk:hover{translate:-3px -3px;box-shadow:inset 0 1px 0 oklch(100% 0 0 / .18),inset 0 0 0 1px color-mix(in oklch,var(--g) 45%,transparent),6px 6px 0 var(--color-accent)}
+.tk:hover::before{opacity:1;scale:1.15}
+.tk:hover::after{translate:100% 0}
+.tk__logo{display:grid;place-items:center;width:44%;height:auto;aspect-ratio:1;align-self:center;filter:drop-shadow(0 6px 14px color-mix(in oklch,var(--g) 40%,transparent))}
+.tk__logo img{width:100%;height:100%;object-fit:contain}
+.tk--mono .tk__logo img{filter:invert(1) brightness(1.05)}
+.tk__name{font:700 clamp(.46rem,.38rem + .35vw,.7rem)/1.1 var(--font-display);text-transform:uppercase;letter-spacing:.04em;text-align:center;color:oklch(100% 0 0 / .78);
+  width:100%;min-height:2.3em;display:flex;align-items:center;justify-content:center;text-wrap:balance;overflow-wrap:normal;word-break:normal;hyphens:none}
+.js .tk-grid .tk{opacity:0;translate:0 12px}
+.js .tk-grid.is-on .tk{opacity:1;translate:0 0;transition:opacity .6s var(--ease-out) calc(var(--i,0) * 35ms),translate .6s var(--ease-out) calc(var(--i,0) * 35ms),box-shadow .35s var(--ease-out)}
+.js .tk-grid.is-on .tk:hover{translate:-3px -3px}
+@media (prefers-reduced-motion:reduce){.js .tk-grid .tk{opacity:1;translate:none}}
