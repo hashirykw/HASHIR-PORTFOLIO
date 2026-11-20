@@ -584,7 +584,7 @@ a.logo-tile--next:hover .h2-like{color:var(--color-paper-hi)}
 .end__corners{display:flex;justify-content:space-between;gap:var(--space-md)}
 .end__mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(.75rem,2vw,1.25rem);text-align:center}
 .end__mid .glyphs{font-size:clamp(1.6rem,1rem + 2.4vw,3.2rem)}
-.end__word{font-size:min(12rem,calc((100vw - 2 * var(--gutter)) / 7.3));line-height:.86;white-space:nowrap;overflow-wrap:normal}
+.end__word{font-size:min(11rem,calc((100vw - 2 * var(--gutter)) / 8.2));line-height:.86;white-space:nowrap;overflow-wrap:normal}
 .end__row{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-xs) clamp(1rem,3vw,2.5rem)}
 .end__row a{display:inline-flex;align-items:center;gap:.5rem;min-height:2.75rem;white-space:nowrap;font:700 var(--text-xs)/1 var(--font-display);letter-spacing:.04em;transition:color var(--dur-short) var(--ease-out)}
 .end__row a:hover{color:var(--color-accent)}
