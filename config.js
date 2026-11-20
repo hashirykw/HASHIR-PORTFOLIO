@@ -167,7 +167,7 @@ window.PORTFOLIO_CONFIG = {
       { role:'Ran two stores', company:'E-commerce', is_current:false, icon:'bag',
         description:'Ran two e-commerce platforms.' },
       { role:'Before Nexlyr', company:'MHW Web Solutions', is_current:false, icon:'code',
-        description:'51+ projects delivered. The foundation Nexlyr was built on.' }
+        description:'100+ projects delivered. The foundation Nexlyr was built on.' }
     ],
     /* Video edits. Vertical clips, kept small so the page stays fast. */
     reels: [
