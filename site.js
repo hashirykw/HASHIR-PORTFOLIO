@@ -178,79 +178,73 @@ onScroll();
   const contact = C.contact || {};
   const WA = (contact.whatsapp || '923322483233').replace(/\D/g, '');
   const wa = (text) => `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
-  const AV = '/avatar.webp';
-  const A = {
-    hi: "Hi, I'm Hashir AI, the assistant on this site. Ask me about websites, video editing, design, social media, timelines or how to start a project.",
-    web: "Hashir builds custom websites, web apps and admin panels by hand (no page builders): 3D and motion where it helps, Supabase backends, fast on phones, hosted on Vercel with your domain.\n\nSee the work: <a href=\"/web-development\">Web development</a>",
-    video: "Promos, explainers, reels and brand idents, edited in Premiere and After Effects with motion graphics that carry the message. AI video (Veo 3, Higgsfield, Runway) when it fits.\n\nSee: <a href=\"/video-editing\">Video editing</a>",
-    design: "Logos, brand identity, social posts and print, designed to hold up everywhere.\n\nSee: <a href=\"/graphic-design\">Graphic design</a>",
-    social: "Full social media management: strategy, a monthly calendar, posts and reels made in-house, posting, boosting and ads.\n\nSee: <a href=\"/social-media-marketing\">Social media</a>",
-    price: "Every project is quoted on its scope, so there are no fixed price lists. Tell Hashir what you need on WhatsApp and you'll get a clear quote and timeline.",
-    time: "Rough guide: a landing page takes days, a multi-page site one to three weeks, a web app with an admin panel longer. Videos and designs are usually days. You get an exact timeline with the quote.",
-    work: "Nexlyr has delivered 500+ projects for clients at home and abroad: schools and teachers, gyms, cafés, clinics, stores and more.\n\nBrowse them: <a href=\"/#work\">Selected work</a>",
-    about: "Muhammad Hashir is a full web developer, motion designer and generative AI expert, and the founder of Nexlyr Solutions and Nexlyr InfiniMind Academy, with Nexlyr for Students coming soon.\n\nMore: <a href=\"/about\">About</a>",
-    contact: `The fastest way is WhatsApp: <a href="${wa("Hi Hashir, I'd like to talk about a project.")}" target="_blank" rel="noopener">message Hashir</a>.\nOr use the <a href="/#contact">contact form</a>.`,
-    start: `Great. Send a short message on WhatsApp with what you need and any links or references: <a href="${wa("Hi Hashir, I want to start a project: ")}" target="_blank" rel="noopener">start on WhatsApp</a>.`,
-    ai: "Hashir uses generative AI across the work: ChatGPT, Claude and Gemini for writing and code, Midjourney for images, Veo 3, Google Flow, Higgsfield and Runway for video, ElevenLabs for voice and Suno for music. Nexlyr also builds AI chatbots and AI calling agents.",
-    hosting: "Yes. Sites go live on Vercel with your own domain and SSL, and Hashir can handle the domain setup, SEO basics and updates after launch.",
-    thanks: "Anytime. If you want to take it further, Hashir is one tap away on WhatsApp."
-  };
-  const RULES = [
-    [/\b(hi|hello|hey|salam|assalam|aoa)\b/i, 'hi'],
-    [/price|cost|charge|rate|budget|kitna|paisa|fee|quote/i, 'price'],
-    [/how long|time ?line|deadline|days|weeks|kab tak|fast/i, 'time'],
-    [/start|hire|book|order|begin|project/i, 'start'],
-    [/web|site|website|app|admin|landing|shop|store|e-?commerce|portal/i, 'web'],
-    [/video|edit|reel|promo|motion|after effects|premiere|animation/i, 'video'],
-    [/logo|brand|design|poster|graphic|identity|print/i, 'design'],
-    [/social|instagram|facebook|tiktok|content|ads|marketing|post/i, 'social'],
-    [/\bai\b|chatgpt|claude|gemini|veo|higgs|runway|generative|chatbot|calling/i, 'ai'],
-    [/domain|host|hosting|vercel|seo|ssl/i, 'hosting'],
-    [/portfolio|work|projects|clients|examples|demo/i, 'work'],
-    [/who|about|hashir|nexlyr|founder/i, 'about'],
-    [/contact|whatsapp|phone|number|email|call|reach/i, 'contact'],
-    [/thank|thanks|shukria|great|cool|nice/i, 'thanks']
-  ];
-  const CHIPS = [['Websites','web'],['Video editing','video'],['Design','design'],['Social media','social'],['Pricing','price'],['Timeline','time'],['Start a project','start']];
+  const CHIPS = ['Websites','Video editing','Branding','Social media','AI chatbots','Show me your work'];
 
   const fab = document.createElement('button');
   fab.type = 'button'; fab.className = 'chat-fab'; fab.setAttribute('aria-label', 'Chat with Hashir AI'); fab.setAttribute('aria-expanded', 'false');
-  fab.innerHTML = `<span class="chat-fab__me" aria-hidden="true"><i></i><img src="/chat-hashir.webp" alt="" width="120" height="120"></span><span class="chat-fab__txt"><b>Hashir AI <em>●</em></b><small>Ask me anything</small></span><span class="chat-fab__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>`;
+  fab.innerHTML = `<span class="chat-fab__me" aria-hidden="true"><i></i><img src="/nexlyr-logo.svg" alt="" width="631" height="1011"></span><span class="chat-fab__txt"><b>Hashir AI <em>●</em></b><small>Ask me anything</small></span><span class="chat-fab__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M8.5 7H17v8.5"/></svg></span>`;
   const box = document.createElement('section');
   box.className = 'chat'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Chat with Hashir AI');
-  box.innerHTML = `<header class="chat__head"><span class="chat-fab__me chat-fab__me--sm" aria-hidden="true"><i></i><img src="/chat-hashir.webp" alt="" width="120" height="120"></span><div><b>Hashir AI</b><small>Assistant · online now</small></div>
+  box.innerHTML = `<header class="chat__head"><span class="chat-fab__me chat-fab__me--sm" aria-hidden="true"><i></i><img src="/nexlyr-logo.svg" alt="" width="631" height="1011"></span><div><b>Hashir AI</b><small>Assistant · online now</small></div>
       <button class="chat__x" type="button" aria-label="Close chat"><svg viewBox="0 0 24 24"><path d="m6.5 6.5 11 11M17.5 6.5l-11 11"/></svg></button></header>
     <div class="chat__log" aria-live="polite"></div>
-    <div class="chat__chips">${CHIPS.map(([t,k]) => `<button type="button" data-k="${k}">${t}</button>`).join('')}</div>
+    <div class="chat__chips"></div>
     <form class="chat__form"><input name="q" autocomplete="off" placeholder="Type a question..." aria-label="Your message" maxlength="300"><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button></form>`;
   document.body.append(fab, box);
-  const log = box.querySelector('.chat__log'), input = box.querySelector('input');
+  const log = box.querySelector('.chat__log'), input = box.querySelector('input'), chipsEl = box.querySelector('.chat__chips');
   const esc = s => s.replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
-  const add = (html, who) => { const m = document.createElement('div'); m.className = 'msg msg--' + who; m.innerHTML = html; log.appendChild(m); log.scrollTop = log.scrollHeight; return m; };
-  function reply(key, asked){
-    const t = add('<i></i><i></i><i></i>', 'bot'); t.classList.add('msg--typing');
+  const add = (html, who) => { const m = document.createElement('div'); m.className = 'msg msg--' + who; m.innerHTML = html; log.appendChild(m); return m; };
+  const setChips = list => { chipsEl.innerHTML = (list && list.length ? list : CHIPS).map(t => `<button type="button">${esc(t)}</button>`).join(''); chipsEl.scrollLeft = 0; };
+  const save = () => { try { sessionStorage.setItem('hm-chat', JSON.stringify({ log:log.innerHTML, chips:[...chipsEl.children].map(b => b.textContent) })); } catch(e){} };
+
+  // the knowledge base lives in its own file and only loads when someone opens the chat
+  let brain;
+  const loadBrain = () => brain || (brain = new Promise(res => {
+    if(window.HashirAI) return res(window.HashirAI);
+    const sc = document.createElement('script'); sc.src = '/assistant.js?v=1'; sc.async = true;
+    sc.onload = () => res(window.HashirAI); sc.onerror = () => res(null);
+    document.head.appendChild(sc);
+  }));
+  let busy = false;
+  async function respond(q){
+    busy = true;
+    const t = add('<i></i><i></i><i></i>', 'bot'); t.classList.add('msg--typing'); t.setAttribute('aria-label', 'Hashir AI is typing');
+    t.scrollIntoView({ block:'end', behavior:'smooth' });
+    const AI = await loadBrain();
+    const r = AI ? AI.answer(q) : { html:`I couldn't load my notes just now. Hashir can answer directly: <a class="msg-cta" href="https://wa.me/${WA}?text=${encodeURIComponent('Hi Hashir, ' + q)}" target="_blank" rel="noopener">Message on WhatsApp ↗</a>`, chips:[] };
+    const words = r.html.replace(/<[^>]+>/g, ' ').split(/\s+/).length;
+    const wait = matchMedia('(prefers-reduced-motion: reduce)').matches ? 150 : Math.min(1500, 380 + words * 9);
     setTimeout(() => {
       t.remove();
-      if(key) add(A[key], 'bot');
-      else add(`Good question. Hashir can answer that directly: <a href="${wa('Hi Hashir, ' + asked)}" target="_blank" rel="noopener">send it on WhatsApp</a>.`, 'bot');
-    }, 650);
+      const m = add(r.html, 'bot');
+      setChips(r.chips); busy = false; save();
+      // long answers: show their start, not their end
+      log.scrollTo({ top:Math.max(0, m.offsetTop - 12), behavior:'smooth' });
+    }, wait);
   }
-  function ask(text, key){
-    add(esc(text), 'me');
-    if(!key){ const r = RULES.find(([re]) => re.test(text)); key = r ? r[1] : null; }
-    reply(key, text);
+  function ask(text){
+    if(busy) return;
+    add(esc(text), 'me'); save();
+    respond(text);
   }
   let opened = false;
   const open = v => {
     box.classList.toggle('is-open', v); fab.classList.toggle('is-open', v); fab.setAttribute('aria-expanded', String(v));
-    if(v && !opened){ opened = true; reply('hi'); }
+    if(v && !opened){
+      opened = true;
+      let past = null; try { past = JSON.parse(sessionStorage.getItem('hm-chat') || 'null'); } catch(e){}
+      if(past && past.log){ log.innerHTML = past.log; setChips(past.chips); log.scrollTop = log.scrollHeight; loadBrain(); }
+      else { setChips(); respond('hi'); }
+    }
     if(v) setTimeout(() => input.focus({ preventScroll:true }), 300);
   };
+  // warm the file up when the visitor shows intent, so the first answer is instant
+  fab.addEventListener('pointerenter', loadBrain, { once:true });
   fab.addEventListener('click', () => open(true));
   box.querySelector('.chat__x').addEventListener('click', () => { open(false); fab.focus(); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape' && box.classList.contains('is-open')) open(false); });
-  box.querySelector('.chat__chips').addEventListener('click', e => { const b = e.target.closest('button'); if(b) ask(b.textContent, b.dataset.k); });
-  box.querySelector('form').addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if(!q) return; input.value = ''; ask(q); });
+  chipsEl.addEventListener('click', e => { const b = e.target.closest('button'); if(b) ask(b.textContent); });
+  box.querySelector('form').addEventListener('submit', e => { e.preventDefault(); const q = input.value.trim(); if(!q || busy) return; input.value = ''; ask(q); });
   // keep the cookie notice and the chat button from overlapping on small screens
   const fixCookie = () => { const ck = document.querySelector('.cookie'); if(ck && innerWidth < 560) ck.style.bottom = 'calc(max(.75rem, env(safe-area-inset-bottom)) + 4.4rem)'; };
   setTimeout(fixCookie, 1500);
