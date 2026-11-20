@@ -801,3 +801,107 @@ a.logo-tile--next:hover .h2-like{color:var(--color-paper-hi)}
 .js .tk-grid.is-on .tk{opacity:1;translate:0 0;transition:opacity .6s var(--ease-out) calc(var(--i,0) * 35ms),translate .6s var(--ease-out) calc(var(--i,0) * 35ms),box-shadow .35s var(--ease-out)}
 .js .tk-grid.is-on .tk:hover{translate:-3px -3px}
 @media (prefers-reduced-motion:reduce){.js .tk-grid .tk{opacity:1;translate:none}}
+
+/* ═════════ DARK THEME · paper turns to charcoal card-stock, ink goes deeper; light is the default ═════════ */
+[data-theme="dark"]{color-scheme:dark}
+[data-theme="dark"] body{background:oklch(19% .004 90)}
+[data-theme="dark"] .top{color:oklch(94% .004 90)}
+[data-theme="dark"] .paper,[data-theme="dark"] .top{
+  --color-paper:oklch(20.5% .004 80);--color-paper-hi:oklch(25% .004 80);--color-cream:oklch(25% .006 80);
+  --color-ink:oklch(94% .004 90);--color-ink-2:oklch(80% .004 90);--color-ink-3:oklch(64% .004 90);
+  --color-grid:oklch(26.5% .004 90);--color-rule:oklch(34% .004 90);--color-shadow:oklch(0% 0 0 / .55);
+  --color-on-ink:oklch(16% .004 90)}
+[data-theme="dark"] .paper{background-image:var(--fringe-t,none),var(--fringe-b,none),
+    linear-gradient(90deg,var(--color-grid) 1px,transparent 1px),linear-gradient(0deg,var(--color-grid) 1px,transparent 1px),url('paper-dark.webp')}
+[data-theme="dark"] .paper.tear-t{--fringe-t:url('fringe-t-dpaper.svg')}
+[data-theme="dark"] .paper.tear-b{--fringe-b:url('fringe-b-dpaper.svg')}
+[data-theme="dark"] .paper.tear-tb{--fringe-t:url('fringe-t-dpaper.svg');--fringe-b:url('fringe-b-dpaper.svg')}
+[data-theme="dark"] .ink{--color-ink:oklch(11% .004 90);--color-grid-ink:oklch(18% .004 90);background-color:oklch(11% .004 90)}
+/* keep things that are meant to stay light, light */
+[data-theme="dark"] .shot--pol,[data-theme="dark"] .polaroid{--color-paper-hi:oklch(96% .004 90);--color-ink:oklch(16% .004 90);--color-ink-3:oklch(45% .004 90)}
+[data-theme="dark"] .logo-tile img{background:oklch(96% .01 90);border-radius:6px;padding:6%}
+[data-theme="dark"] .tk{box-shadow:inset 0 1px 0 oklch(100% 0 0 / .14),inset 0 0 0 1px oklch(100% 0 0 / .08),3px 3px 0 oklch(0% 0 0 / .6)}
+[data-theme="dark"] .shot--note{background:oklch(94% .004 90);color:oklch(16% .004 90)}
+[data-theme="dark"] .o__face img,[data-theme="dark"] .sticker img{filter:none}
+html.theme-swap,html.theme-swap *{transition:background-color .45s var(--ease-out),color .45s var(--ease-out),border-color .45s var(--ease-out)!important}
+
+/* theme switch: a small pill with a sliding knob */
+.top .wrap>.theme-btn{margin-left:auto;margin-right:.5rem}
+@media (min-width:60rem){.top .wrap>.theme-btn{margin:0 0 0 -.4rem}}
+.theme-btn{position:relative;display:inline-grid;place-items:center;flex:none;width:3.1rem;height:1.7rem;border-radius:999px;margin-left:.2rem;
+  background:var(--color-ink);color:var(--color-paper-hi);box-shadow:inset 0 0 0 1.5px var(--color-ink)}
+.theme-btn::before{content:"";position:absolute;left:.2rem;top:.2rem;width:1.3rem;height:1.3rem;border-radius:50%;background:var(--color-paper-hi);transition:translate .45s var(--ease-out)}
+.theme-btn svg{position:absolute;width:.8rem;height:.8rem;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;transition:opacity .3s}
+.theme-btn .i-sun{left:.45rem;color:var(--color-ink)}
+.theme-btn .i-moon{right:.4rem}
+[data-theme="dark"] .theme-btn::before{translate:1.4rem 0}
+[data-theme="dark"] .theme-btn .i-sun{color:var(--color-paper-hi)}
+[data-theme="dark"] .theme-btn .i-moon{color:var(--color-ink)}
+.float .theme-btn{background:var(--color-paper-hi);--color-paper-hi:var(--color-ink);color:var(--color-on-ink)}
+.theme-btn:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px}
+
+/* ═════════ cookie notice ═════════ */
+.cookie{position:fixed;z-index:80;left:max(.75rem,env(safe-area-inset-left));bottom:max(.75rem,env(safe-area-inset-bottom));width:min(23rem,calc(100vw - 1.5rem));
+  padding:1rem 1.1rem 1.05rem;background:oklch(14% .004 90);color:oklch(95% .004 90);box-shadow:5px 5px 0 var(--color-accent),0 24px 50px -20px oklch(0% 0 0 / .6);
+  display:grid;gap:.75rem;translate:0 calc(100% + 2rem);opacity:0;transition:translate .7s var(--ease-out),opacity .5s var(--ease-out)}
+.cookie.is-on{translate:0 0;opacity:1}
+.cookie b{font:900 var(--text-sm)/1 var(--font-display);text-transform:uppercase;letter-spacing:.02em;display:flex;align-items:center;gap:.5rem}
+.cookie b svg{width:1rem;height:1rem;fill:var(--color-accent)}
+.cookie p{font-size:var(--text-sm);line-height:1.5;color:oklch(80% .004 90)}
+.cookie__row{display:flex;gap:.5rem;flex-wrap:wrap}
+.cookie__row button{min-height:2.5rem;padding:0 1rem;font:700 var(--text-xs)/1 var(--font-display);text-transform:uppercase;letter-spacing:.05em;transition:background-color var(--dur-short),color var(--dur-short)}
+.cookie__ok{background:oklch(96% .004 90);color:oklch(14% .004 90)}
+.cookie__ok:hover{background:var(--color-accent);color:#fff}
+.cookie__no{box-shadow:inset 0 0 0 1.5px oklch(100% 0 0 / .3)}
+.cookie__no:hover{box-shadow:inset 0 0 0 1.5px oklch(100% 0 0 / .8)}
+
+/* ═════════ chat assistant ═════════ */
+.chat-fab{position:fixed;z-index:85;right:max(.9rem,env(safe-area-inset-right));bottom:max(.9rem,env(safe-area-inset-bottom));display:flex;align-items:center;gap:.6rem;
+  height:3.4rem;padding:0 1.1rem 0 .45rem;background:oklch(14% .004 90);color:#fff;box-shadow:4px 4px 0 var(--color-accent),0 16px 34px -16px oklch(0% 0 0 / .6);
+  font:700 var(--text-xs)/1 var(--font-display);text-transform:uppercase;letter-spacing:.05em;transition:translate .35s var(--ease-out),box-shadow .35s var(--ease-out)}
+.chat-fab:hover{translate:-2px -2px;box-shadow:6px 6px 0 var(--color-accent),0 18px 36px -16px oklch(0% 0 0 / .6)}
+.chat-fab__av{position:relative;width:2.5rem;height:2.5rem;border-radius:50%;overflow:hidden;flex:none;background:#222}
+.chat-fab__av img{width:100%;height:100%;object-fit:cover}
+.chat-fab__av::after{content:"";position:absolute;right:1px;bottom:1px;width:.65rem;height:.65rem;border-radius:50%;background:#2fd36b;box-shadow:0 0 0 2px oklch(14% .004 90)}
+.chat-fab.is-open{opacity:0;pointer-events:none;translate:0 1rem}
+@media (max-width:40rem){.chat-fab span:last-child{display:none}.chat-fab{padding:0 .45rem}}
+.chat{position:fixed;z-index:90;right:max(.75rem,env(safe-area-inset-right));bottom:max(.75rem,env(safe-area-inset-bottom));width:min(24rem,calc(100vw - 1.5rem));
+  height:min(36rem,calc(100svh - 1.5rem));display:grid;grid-template-rows:auto 1fr auto auto;background:oklch(97% .003 90);color:oklch(16% .004 90);
+  box-shadow:6px 6px 0 oklch(14% .004 90),0 30px 70px -24px oklch(0% 0 0 / .55);transform-origin:100% 100%;
+  scale:.9;opacity:0;pointer-events:none;transition:scale .45s var(--ease-out),opacity .3s var(--ease-out)}
+.chat.is-open{scale:1;opacity:1;pointer-events:auto}
+.chat__head{display:flex;align-items:center;gap:.7rem;padding:.8rem .9rem;background:oklch(14% .004 90);color:#fff}
+.chat__head img{width:2.4rem;height:2.4rem;border-radius:50%;object-fit:cover}
+.chat__head b{display:block;font:900 var(--text-sm)/1.1 var(--font-display);text-transform:uppercase}
+.chat__head small{display:flex;align-items:center;gap:.35rem;font-size:var(--text-xs);color:oklch(78% .004 90)}
+.chat__head small::before{content:"";width:.45rem;height:.45rem;border-radius:50%;background:#2fd36b}
+.chat__x{margin-left:auto;width:2.4rem;height:2.4rem;display:grid;place-items:center;color:#fff}
+.chat__x svg{width:1.1rem;height:1.1rem;fill:none;stroke:currentColor;stroke-width:2}
+.chat__log{overflow-y:auto;overscroll-behavior:contain;padding:1rem .9rem;display:flex;flex-direction:column;gap:.55rem;
+  background-image:linear-gradient(90deg,oklch(90% .004 90) 1px,transparent 1px),linear-gradient(0deg,oklch(90% .004 90) 1px,transparent 1px);background-size:22px 22px}
+.msg{max-width:86%;padding:.65rem .8rem;font-size:var(--text-sm);line-height:1.5;white-space:pre-line;animation:msgIn .35s var(--ease-out)}
+.msg a{text-decoration:underline;text-underline-offset:2px;font-weight:600}
+.msg--bot{align-self:flex-start;background:#fff;box-shadow:inset 0 0 0 1.5px oklch(16% .004 90),3px 3px 0 oklch(16% .004 90)}
+.msg--me{align-self:flex-end;background:oklch(16% .004 90);color:#fff}
+.msg--typing{display:flex;gap:.25rem}
+.msg--typing i{width:.4rem;height:.4rem;border-radius:50%;background:oklch(50% 0 0);animation:dot 1s infinite}
+.msg--typing i:nth-child(2){animation-delay:.15s}.msg--typing i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{opacity:.25;translate:0 0}50%{opacity:1;translate:0 -3px}}
+@keyframes msgIn{from{opacity:0;translate:0 6px}to{opacity:1;translate:0 0}}
+.chat__chips{display:flex;gap:.4rem;overflow-x:auto;padding:.6rem .9rem;scrollbar-width:none;border-top:1px solid oklch(86% .004 90);background:#fff}
+.chat__chips::-webkit-scrollbar{display:none}
+.chat__chips button{flex:none;min-height:2.1rem;padding:0 .75rem;font:700 .625rem/1 var(--font-display);text-transform:uppercase;letter-spacing:.04em;box-shadow:inset 0 0 0 1.5px oklch(16% .004 90)}
+.chat__chips button:hover{background:oklch(16% .004 90);color:#fff}
+.chat__form{display:flex;gap:.4rem;padding:.6rem .9rem .8rem;background:#fff}
+.chat__form input{flex:1;min-width:0;height:2.7rem;padding:0 .8rem;border:0;box-shadow:inset 0 0 0 1.5px oklch(80% .004 90);background:oklch(98% .002 90);font-size:16px}
+.chat__form input:focus{outline:none;box-shadow:inset 0 0 0 1.5px oklch(16% .004 90)}
+.chat__form button{width:2.7rem;height:2.7rem;display:grid;place-items:center;background:var(--color-accent);color:#fff}
+.chat__form button svg{width:1.05rem;height:1.05rem;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+[data-theme="dark"] .chat{background:oklch(19% .004 90);color:oklch(94% .004 90)}
+[data-theme="dark"] .chat__log{background-image:linear-gradient(90deg,oklch(24% .004 90) 1px,transparent 1px),linear-gradient(0deg,oklch(24% .004 90) 1px,transparent 1px)}
+[data-theme="dark"] .msg--bot{background:oklch(25% .004 90);box-shadow:inset 0 0 0 1.5px oklch(40% .004 90),3px 3px 0 oklch(0% 0 0)}
+[data-theme="dark"] .msg--me{background:var(--color-accent)}
+[data-theme="dark"] .chat__chips,[data-theme="dark"] .chat__form{background:oklch(17% .004 90);border-color:oklch(28% .004 90)}
+[data-theme="dark"] .chat__chips button{box-shadow:inset 0 0 0 1.5px oklch(60% .004 90)}
+[data-theme="dark"] .chat__form input{background:oklch(22% .004 90);box-shadow:inset 0 0 0 1.5px oklch(35% .004 90)}
+@media (prefers-reduced-motion:reduce){.chat,.cookie,.msg{transition:none;animation:none}}
