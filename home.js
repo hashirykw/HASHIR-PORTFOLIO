@@ -124,7 +124,7 @@ function paintLogos(){
 function paintExperience(list){
   const now = list.filter(r => r.is_current), before = list.filter(r => !r.is_current);
   const row = r => {
-    const when = r.period_start ? `${esc(r.period_start)}–${r.period_end ? esc(r.period_end) : 'now'}` : (r.is_current ? 'Now' : '');
+    const when = r.period_start ? `${esc(r.period_start)}–${r.period_end ? esc(r.period_end) : 'now'}` : (r.soon ? 'Soon' : r.is_current ? 'Now' : '');
     return `<div class="exp__row"><b>${esc(r.role)}</b><span>${esc(r.company)}</span>${when ? `<em class="num">${when}</em>` : ''}</div>`;
   };
   $('#expList').innerHTML =
@@ -285,18 +285,16 @@ if(URL_OK){
   io.observe(box);
 })();
 
-/* ── the turnaround box leans toward the pointer ── */
+/* ── the HELLO figure: a rotating 3D model, loaded only when the block comes near the screen ── */
 (() => {
-  const t = $('.turn');
-  if(!t || reduce || !matchMedia('(hover: hover)').matches) return;
-  const img = t.querySelector('.turn__img');
-  t.addEventListener('pointermove', e => {
-    const r = t.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-    img.style.transform = `rotateY(${x * 18}deg) rotateX(${-y * 10}deg)`;
-  });
-  t.addEventListener('pointerleave', () => { img.style.transform = ''; });
-  img.style.transition = 'transform .5s cubic-bezier(.16,1,.3,1)';
+  const t = $('.turn'); if(!t) return;
+  const gl = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch(e){ return false; } })();
+  if(!gl){ t.classList.add('no-3d'); return; }
+  const io = new IntersectionObserver(es => {
+    if(!es[0].isIntersecting) return; io.disconnect();
+    import('./figure.js?v=1').then(m => m.mountFigure(t)).catch(() => t.classList.add('no-3d'));
+  }, { rootMargin:'600px' });
+  io.observe(t);
 })();
 
 /* ── contact form → Supabase messages table ── */
