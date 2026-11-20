@@ -1,31 +1,39 @@
 <!doctype html><html><head><meta charset="utf-8"><style>
+/* Social preview card, 1200x630. Crop-safe: face + name live in the centre 630x630 square,
+   so WhatsApp / iMessage / Instagram square thumbnails still show the important part. */
 @font-face{font-family:W;src:url(../font-archivo-wide-900.woff2);font-weight:900}
 @font-face{font-family:W;src:url(../font-archivo-wide-700.woff2);font-weight:700}
 @font-face{font-family:T;src:url(../font-archivo-400.woff2);font-weight:400}
-@font-face{font-family:T;src:url(../font-archivo-body-600.woff2);font-weight:600}
 *{margin:0;box-sizing:border-box}
 :root{--ink:oklch(16% .004 90);--paper:oklch(95.5% .004 90);--grid:oklch(86.5% .004 90);--red:oklch(59% .215 27.5)}
 body{width:1200px;height:630px;overflow:hidden;position:relative;color:var(--ink);font-family:T;
  background-color:var(--paper);background-image:linear-gradient(90deg,var(--grid) 1px,transparent 1px),linear-gradient(0deg,var(--grid) 1px,transparent 1px),url(../paper-light.webp);
  background-size:28px 28px,28px 28px,1024px 1024px;background-position:-1px -1px,-1px -1px,0 0}
-.top{position:absolute;left:56px;right:56px;top:44px;display:flex;justify-content:space-between;align-items:center;font:700 17px/1 W;letter-spacing:.06em;text-transform:uppercase}
-.top span{display:flex;align-items:center;gap:14px} .top img{height:30px}
-.url{position:absolute;right:68px;bottom:34px;font-style:normal;font:700 14px/1 W;letter-spacing:.08em;padding:12px 16px;background:var(--ink);color:#fff}
-.lbl{position:absolute;left:56px;top:150px;font:700 16px/1 W;letter-spacing:.1em;text-transform:uppercase;color:var(--red)}
-h1{position:absolute;left:52px;top:186px;font:900 84px/.9 W;text-transform:uppercase;letter-spacing:-.01em}
-p{position:absolute;left:56px;top:384px;width:560px;font:400 23px/1.45 T;color:oklch(32% .004 90)}
-.tags{position:absolute;left:56px;bottom:62px;display:flex;gap:12px}
-.tags b{font:700 13px/1 W;letter-spacing:.06em;text-transform:uppercase;padding:13px 15px;background:#fff;box-shadow:inset 0 0 0 2px var(--ink),4px 4px 0 var(--ink)}
-.o{position:absolute;left:782px;top:196px;width:350px;height:350px}
-.o i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 38% 30%,oklch(30% .004 90),oklch(10% .004 90) 72%);box-shadow:0 0 0 7px var(--red)}
-.o img{position:absolute;left:50%;bottom:0;width:357px;translate:-50% 0;filter:drop-shadow(0 18px 24px oklch(0% 0 0 / .3))}
-.sign{position:absolute;left:700px;bottom:26px;width:250px;transform:rotate(-6deg)}
-.sign svg{width:100%;height:auto;fill:var(--ink)}
+.o{position:absolute;left:50%;top:176px;width:292px;height:292px;translate:-50% 0}
+.o i{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 38% 30%,oklch(30% .004 90),oklch(10% .004 90) 72%);box-shadow:0 0 0 6px var(--red)}
+.o img{position:absolute;left:50%;bottom:0;width:298px;translate:-50% 0;filter:drop-shadow(0 16px 22px oklch(0% 0 0 / .28))}
+h1{position:absolute;left:0;right:0;top:494px;text-align:center;font:900 58px/.95 W;text-transform:uppercase}
+.side{position:absolute;top:52px;bottom:52px;width:220px;display:flex;flex-direction:column;justify-content:space-between}
+.l{left:52px}.r{right:52px;align-items:flex-end;text-align:right}
+.brand{display:flex;align-items:center;gap:12px;font:700 16px/1 W;letter-spacing:.06em;text-transform:uppercase}
+.brand img{height:30px}
+.lbl{font:700 15px/1.35 W;letter-spacing:.08em;text-transform:uppercase;color:var(--red)}
+.tags{display:grid;gap:12px;justify-items:start}
+.r .tags{justify-items:end}
+.tags b{font:700 13px/1 W;letter-spacing:.06em;text-transform:uppercase;padding:12px 14px;background:#fff;box-shadow:inset 0 0 0 2px var(--ink),4px 4px 0 var(--ink)}
+.url{font:700 12px/1 W;letter-spacing:.04em;padding:11px 12px;background:var(--ink);color:#fff}
+.note{font:400 18px/1.4 T;color:oklch(32% .004 90)}
 </style></head><body>
-<div class="top"><span><img src="../nexlyr-logo.svg" alt="">M. Hashir</span></div><em class="url">hashir.nexlyr.solutions</em>
-<div class="lbl">Web developer / Motion designer</div>
-<h1>Muhammad<br>Hashir</h1>
-<p>Founder of Nexlyr Solutions. Websites and web apps, motion and video, brands and social media for clients worldwide.</p>
-<div class="tags"><b>Web</b><b>Video</b><b>Design</b><b>Social</b></div>
+<div class="side l">
+  <div class="brand"><img src="../nexlyr-logo.svg" alt="">M. Hashir</div>
+  <div class="lbl">Web developer<br>/ Motion designer<br>/ Gen AI</div>
+  <div class="tags"><b>Web</b><b>Video</b></div>
+</div>
+<div class="side r">
+  <span class="url">hashir.nexlyr.solutions</span>
+  <p class="note">Founder of<br>Nexlyr Solutions.<br>Karachi, worldwide.</p>
+  <div class="tags"><b>Design</b><b>Social</b></div>
+</div>
 <div class="o"><i></i><img src="../hashir-pop.webp" alt=""></div>
+<h1>Muhammad<br>Hashir</h1>
 </body></html>
