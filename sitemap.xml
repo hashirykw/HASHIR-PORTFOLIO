@@ -4,7 +4,7 @@
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://hashir.nexlyr.solutions/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -39,7 +39,7 @@
   </url>
   <url>
     <loc>https://hashir.nexlyr.solutions/web-development</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -49,7 +49,7 @@
   </url>
   <url>
     <loc>https://hashir.nexlyr.solutions/graphic-design</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -59,7 +59,7 @@
   </url>
   <url>
     <loc>https://hashir.nexlyr.solutions/video-editing</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -69,7 +69,7 @@
   </url>
   <url>
     <loc>https://hashir.nexlyr.solutions/social-media-marketing</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -79,7 +79,7 @@
   </url>
   <url>
     <loc>https://hashir.nexlyr.solutions/about</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>

@@ -1,10 +1,44 @@
 # Muhammad Hashir — Portfolio
 
-A one-page portfolio built around a scroll-controlled sunset video, with a
-pull-down "full portfolio" dashboard in a liquid glass style.
+A portfolio in a graphic-design "paper and ink" style: crumpled graph paper,
+torn edges, ultra-wide caps, editor-style selection boxes, a marquee band and
+chapter cards. (Redesigned November 2026, see the next section. Parts of the
+older notes further down describe the previous video/pull-down version.)
 
 Live: https://hashir.nexlyr.solutions
 Repo: https://github.com/hashirykw/HASHIR-PORTFOLIO
+
+---
+
+## Redesign — November 2026 (branch `redesign`)
+
+**How the files fit together now**
+
+| File | What it does |
+|---|---|
+| `site.css` | The whole design system for every page: colours, type, paper, torn edges, selection boxes, buttons, nav, footer |
+| `site.js` | Shared behaviour: smooth scroll, nav, selection-box animation, marquee speed, streak dividers, deep links |
+| `home.js` | Home page data: work tabs (Live / Demos / Software) and categories, logos, experience, certificates, reels, designs, viewer, Supabase and the contact form |
+| `config.js` | Still the only file you edit for content |
+| `font-archivo-wide-900/700.woff2`, `font-archivo-400.woff2`, `font-archivo-body-600.woff2`, `font-hand.woff2` | The fonts (Archivo and Nothing You Could Do, both open licence), subset and self-hosted |
+| `paper-light.webp`, `paper-dark.webp` | The crumpled-paper textures (the grid lines are drawn by CSS) |
+| `tear-t.svg`, `tear-b.svg`, `fringe-*.svg` | The torn paper edges |
+| `hashir-sticker.webp` | Your cutout with the thick red sticker outline (black band) |
+| `avatar-ink.webp` | Black-and-white avatar inside the O of PORTFOLIO |
+| `design.md` | A short note of the design system, for whoever edits the CSS next |
+
+- **Text is in the HTML.** The work list, logos, experience, reels and designs are
+  pre-rendered into `index.html`, and `home.js` redraws them from `config.js` (or
+  Supabase) on load. After big changes to `config.js` the page still updates; ask
+  for a re-render so the pre-rendered copy matches.
+- **No preloader.** Headlines are there at first paint; only frames, images and
+  decorations animate.
+- **The 13 MB film** now only plays inside the "Web development" chapter card, on
+  large screens with a normal connection. Phones never download it.
+- **Deep links** `/work`, `/reels`, `/design`, `/services`, `/experience`,
+  `/contact` and `#about` scroll to their section.
+- **To swap photos:** the polaroids are in `index.html` (search `polaroid`), the
+  turnaround box uses `hashir-cutout.webp`, the black band uses `hashir-sticker.webp`.
 
 ---
 
